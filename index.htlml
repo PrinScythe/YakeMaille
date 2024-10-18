@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Inputs</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Formulaire avec 4 inputs</h1>
+
+    <form>
+        <label for="inc">Increment:</label>
+        <input type="number" value="0" id="inc" name="inc" onchange="doChange()"><br><br>
+
+        <label for="dec">Decrement:</label>
+        <input type="number" value="0" id="dec" name="dec" onchange="doChange()"><br><br>
+
+        <label for="sc">SC:</label>
+        <input type="number" value="0" id="sc" name="sc" onchange="doChange()"><br><br>
+
+        <label for="total">Total:</label>
+        <input type="number" value="0" id="total" name="total">
+        <button type="button" id="augmenter">Augmenter</button>
+        <button type="button" id="diminuer">Diminuer</button><br><br>
+
+        <button type="button" id="process">Process</button>
+        <button type="button" id="reset" onclick="resetData()">Reset</button>
+    </form>
+
+    <p id="output">La sortie sera affichée ici.</p>
+</body>
+</html>

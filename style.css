@@ -1,0 +1,57 @@
+/* Style général pour imiter le thème Darcula */
+body {
+    background-color: #2B2B2B;
+    color: #A9B7C6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Style des inputs et du formulaire */
+input {
+    background-color: #3C3F41;
+    color: #A9B7C6;
+    border: 1px solid #555555;
+    padding: 5px;
+    font-size: 14px;
+}
+
+input[readonly] {
+    background-color: #4E4E4E;
+    color: #A9B7C6;
+}
+
+button {
+    background-color: #4E4E4E;
+    color: #A9B7C6;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6C6C6C;
+}
+
+/* Style spécifique pour l'output */
+#output {
+    background-color: #3C3F41;
+    color: #A9B7C6;
+    font-family: 'Consolas', monospace; /* Police à chasse fixe */
+    border: 1px solid #555555;
+    padding: 10px;
+    margin-top: 20px;
+    white-space: pre-wrap; /* Pour conserver les espaces et retours à la ligne */
+}
+
+/* Ajustements du formulaire */
+label {
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
