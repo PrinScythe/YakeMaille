@@ -39,30 +39,30 @@ document.getElementById('diminuer').addEventListener('click', function () {
 document.getElementById('process').addEventListener('click', process);
 
 function process() {
-        const inputString = dostuf();
+    const inputString = dostuf();
 
-        // Créer l'output en fonction des valeurs 0, 1, 2
-        let outputString = "";
+    // Créer l'output en fonction des valeurs 0, 1, 2
+    let outputString = "";
 
-        // Boucle sur chaque caractère de la chaîne d'entrée
-        for (let i = 1; i <= inputString.length; i++) {
-            switch (inputString[i - 1]) {
-                case '0':
-                    outputString += `<span style="color:#8BE9FD;">${i}</span> `;
-                    break;
-                case '1':
-                    outputString += `<span style="color:#50FA7B;">${i}</span> `;
-                    break;
-                case '2':
-                    outputString += `<span style="color:#BD93F9;">${i}</span> `;
-                    break;
-                default:
-                    outputString += `${i} `; // En cas d'autres caractères (optionnel)
-            }
+    // Boucle sur chaque caractère de la chaîne d'entrée
+    for (let i = 1; i <= inputString.length; i++) {
+        switch (inputString[i - 1]) {
+            case '0':
+                outputString += `<span style="color:#8BE9FD;">${i}</span> `;
+                break;
+            case '1':
+                outputString += `<span style="color:#50FA7B;">${i}</span> `;
+                break;
+            case '2':
+                outputString += `<span style="color:#BD93F9;">${i}</span> `;
+                break;
+            default:
+                outputString += `${i} `; // En cas d'autres caractères (optionnel)
         }
+    }
 
-        // Afficher l'output dans l'élément HTML prévu
-        document.getElementById('output').innerHTML = outputString;
+    // Afficher l'output dans l'élément HTML prévu
+    document.getElementById('output').innerHTML = outputString;
 }
 
 function dostuf() {
@@ -75,12 +75,15 @@ function dostuf() {
     const sum = 2 * inc + dec + sc;
     let res = ""
     for (let index = 1; index <= total; index++) {
-        if (index % sum >= 1 && index % sum <= sc) res += "0";
+        if ((index % sum >= 1 && index % sum <= sc) || (index % sum == 0 && dec == 0 && inc == 0)) res += "0";
         else {
-            if (index % sum > sc && index % sum <= sc + dec) res += "1"
-            else res += "2"
+            if ((index % sum > sc && index % sum <= sc + dec) || ((index % sum == 0 && dec != 0 && inc == 0)))
+                res += "1"
+            else
+                res += "2"
         }
     }
+    console.debug("Nombre de mailles nécessaires : " + (inc + 2 * dec + sc) * (total/sum));
     return res;
 }
 
@@ -91,7 +94,6 @@ function doChange() {
 
     const total = 2 * inc + dec + sc;
     document.getElementById("total").value = total;
-    console.debug("change done : " + total);
 
     process();
 }
