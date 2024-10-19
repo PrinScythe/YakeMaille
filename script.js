@@ -44,21 +44,41 @@ function process() {
     // Créer l'output en fonction des valeurs 0, 1, 2
     let outputString = "";
 
+    let shouldIclose = 0
+
     // Boucle sur chaque caractère de la chaîne d'entrée
-    for (let i = 1; i <= inputString.length; i++) {
-        switch (inputString[i - 1]) {
+    for (let i = 0; i < inputString.length; i++) {
+        if (shouldIclose == 2){
+            shouldIclose = 0;
+            outputString += ']'
+        }
+        if (i == 0 ||
+            inputString[i] != inputString[i - 1] ||
+            inputString[i] == '0' ||
+            inputString[i] == '1' ||
+            shouldIclose == 0) {
+            outputString += '[ '
+        };
+        switch (inputString[i]) {
             case '0':
-                outputString += `<span style="color:#8BE9FD;">${i}</span> `;
+                outputString += `<span style="color:#8BE9FD;">${i + 1}</span> `;
+                shouldIclose = 0;
                 break;
             case '1':
-                outputString += `<span style="color:#50FA7B;">${i}</span> `;
+                outputString += `<span style="color:#50FA7B;">${i + 1}</span> `;
+                shouldIclose = 0;
                 break;
             case '2':
-                outputString += `<span style="color:#BD93F9;">${i}</span> `;
+                outputString += `<span style="color:#BD93F9;">${i + 1}</span> `;
+                shouldIclose++;
                 break;
             default:
-                outputString += `${i} `; // En cas d'autres caractères (optionnel)
+                outputString += `${i + 1} `; // En cas d'autres caractères (optionnel)
         }
+        if (i == inputString ||
+            inputString[i] != inputString[i + 1] ||
+            inputString[i] == '0' ||
+            inputString[i] == '1') outputString += ']';
     }
 
     // Afficher l'output dans l'élément HTML prévu
@@ -83,7 +103,7 @@ function dostuf() {
                 res += "2"
         }
     }
-    console.debug("Nombre de mailles nécessaires : " + (inc + 2 * dec + sc) * (total/sum));
+    console.debug("Nombre de mailles nécessaires : " + (inc + 2 * dec + sc) * (total / sum));
     return res;
 }
 
